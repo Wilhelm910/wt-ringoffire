@@ -1,0 +1,148 @@
+.game-background {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    background-image: url('/assets/img/board.jpg/');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-stack {
+    position: relative;
+
+    img {
+        position: absolute;
+        width: 120px;
+    }
+}
+
+.top-card {
+    transition: all 175ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.05) translateY(-10px);
+        cursor: pointer;
+    }
+}
+
+.pick-card {
+    animation: pick-card-animation 1s ease-in-out;
+    transform: scale(1.2) translateX(150px) translateY(-150px) rotate(-10deg);
+}
+
+@keyframes pick-card-animation {
+    0% {
+        transform: scale(1.05);
+    }
+
+    50% {
+        transform: scale(1.7)
+    }
+
+    100% {
+        transform: scale(1.2) translateX(150px) translateY(-150px) rotate(-10deg);
+    }
+}
+
+.played-card {
+    right: 25px;
+    transform: scale(1.2) translateX(150px) translateY(-150px) rotate(-10deg);
+}
+
+.player-container {
+    position: absolute;
+    left: 0px;
+}
+
+.btn-add {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;
+
+    @media(max-width: 720px) {
+        right: 32px;
+        bottom: 145px;
+    }
+}
+
+.pin-bottom {
+    position: absolute;
+    bottom: 32px;
+    left: 100px;
+    right: 100px;
+
+    @media(max-width: 720px) {
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+    }
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.position-absolute {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.player-container-mobile {
+    margin: 0 4px;
+}
+
+.scroll-container-y {
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.position-absolute-y {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 55%;
+    bottom: 500px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+app-player-mobile,
+app-player {
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+
+.end-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 1;
+
+    img {
+        width: 90%;
+        height: 90%;
+        object-fit: contain;
+    }
+}
+
+.preload-img {
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+    z-index: -999;
+}

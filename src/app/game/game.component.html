@@ -1,0 +1,41 @@
+<div class="scroll-container-y position-absolute-y">
+    <app-player (click)=" editPlayer(i)" *ngFor="let player of this.game.players; let i = index;" [name]="player"
+        [activePlayer]="i == game.currentPlayer" [image]="game.images[i]" class="player-container hide-mobile"
+        [ngStyle]="{'top.px': 50 + (i * 80)}"></app-player>
+</div>
+<div class="scroll-container position-absolute">
+    <app-player-mobile (click)="editPlayer(i)" *ngFor="let player of this.game.players; let i = index;" [name]="player"
+        [activePlayer]="i == game.currentPlayer" [image]="game.images[i]" class="player-container-mobile hide-desktop"
+        [ngStyle]="{'left.px': 5 + (i * 50)}"></app-player-mobile>
+</div>
+
+<div class="end-screen" *ngIf="gameOver">
+    <img src="assets/img/game_over.svg">
+    <p>New Game</p>
+</div>
+
+<div class="game-background" >
+    <div class="card-stack">
+        <!--Card Stack-->
+        <img *ngFor="let c of [1,2,3,4]; let i = index;" [ngStyle]="{'right.px': i * 5 }"
+            src="assets/img/card_cover.png">
+
+        <img (click)="showNextCard()" class="top-card" style="right: 25px" src="assets/img/card_cover.png">
+
+        <!--preload img-->
+        <img class="preload-img" src="assets/img/cards/{{ game.stack[game.stack.length -1] }}.png">
+
+        <!--Stack for played Cards-->
+        <img class="played-card" *ngFor="let card of this.game.playedCards" src="assets/img/cards/{{ card }}.png">
+
+        <!--Moving Card-->
+        <img *ngIf="game.pickCardAnimation" (click)="showNextCard()" class="pick-card" style="right: 25px"
+            src="assets/img/cards/{{ game.currentCard }}.png">
+    </div>
+</div>
+
+<app-game-info [card]="game.currentCard" class="pin-bottom"></app-game-info>
+
+<button mat-fab color="primary" class="btn-add" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+</button>

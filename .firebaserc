@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "wt-ringoffire": {
+      "hosting": {
+        "wt-ringoffire": [
+          "wt-ringoffire"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wt-ringoffire"
+  }
+}
