@@ -30,11 +30,8 @@ export class GameComponent implements OnInit {
 
     this.newGame();
     this.route.params.subscribe((params) => {
-      console.log(params)
       this.gameId = params['id']
-      console.log(this.gameId)
       this.firestore.collection('games').doc(this.gameId).valueChanges().subscribe((game: any) => {
-        console.log(game)
         this.game.currentPlayer = game.currentPlayer;
         this.game.stack = game.stack;
         this.game.playedCards = game.playedCards;
@@ -57,9 +54,7 @@ export class GameComponent implements OnInit {
       this.gameOver = true;
     } else if (!this.game.pickCardAnimation) {
       this.game.currentCard = this.game.stack.pop()
-
       this.game.pickCardAnimation = true;
-
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       this.saveGame();
@@ -89,7 +84,6 @@ export class GameComponent implements OnInit {
   }
 
   editPlayer(playerId: number) {
-    console.log(playerId)
     const dialogRef = this.dialog.open(EditPlayerComponent)
     dialogRef.afterClosed().subscribe((image: string) => {
       if (image && image.length > 0) {
@@ -99,7 +93,6 @@ export class GameComponent implements OnInit {
         }
         else {
           this.game.images[playerId] = image;
-
         }
         this.saveGame();
       }
