@@ -3,7 +3,7 @@
     height: 50px;
     border-radius: 100%;
     object-fit: cover;
-
+   
 
     &:hover {
         cursor: pointer;
@@ -11,4 +11,8 @@
     }
 
 
+}
+
+.profile-pictures-container {
+    margin: 16px;
 }

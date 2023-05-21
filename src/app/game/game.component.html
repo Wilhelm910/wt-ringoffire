@@ -1,3 +1,5 @@
+<div class="background-img"><img src="/assets/img/board.jpg"></div>
+
 <div class="scroll-container-y position-absolute-y">
     <app-player (click)=" editPlayer(i)" *ngFor="let player of this.game.players; let i = index;" [name]="player"
         [activePlayer]="i == game.currentPlayer" [image]="game.images[i]" class="player-container hide-mobile"
